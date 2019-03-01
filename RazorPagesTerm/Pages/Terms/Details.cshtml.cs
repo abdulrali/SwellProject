@@ -7,12 +7,14 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using RazorPagesTerm.ApiHandlers;
 using RazorPagesTerm.Models;
+using Hl7.Fhir.Model;
 
 namespace RazorPagesTerm.Pages.Terms
 {
     public class DetailsModel : PageModel
     {
-        public Term Term { get; set; }
+        //public Term Term { get; set; }
+        public Library Library { get; set; }
 
         public async Task<IActionResult> OnGetAsync(string id)
         {
@@ -21,9 +23,10 @@ namespace RazorPagesTerm.Pages.Terms
                 return NotFound();
             }
 
-            Term = await GetLibrary.GetTermAsync(id);
+            //Term = await GetLibrary.GetTermAsync(id);
+            Library = await FhirClientHandler.GetLibraryAsync(id);
 
-            if (Term == null)
+            if (Library == null)
             {
                 return NotFound();
             }

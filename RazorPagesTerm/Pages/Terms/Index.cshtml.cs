@@ -7,13 +7,14 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using RazorPagesTerm.ApiHandlers;
-using RazorPagesTerm.Models;
+using Hl7.Fhir.Model;
 
 namespace RazorPagesTerm.Pages.Terms
 {
     public class IndexModel : PageModel
     {
-        public IList<Term> Term { get; set; }
+        //public IList<Term> Term { get; set; }
+        public IList<Library> Library { get; set; }
         [BindProperty(SupportsGet = true)]
         public string SearchString { get; set; }
         public SelectList Authors { get; set; }
@@ -22,7 +23,8 @@ namespace RazorPagesTerm.Pages.Terms
 
         public async Task OnGetAsync()
         {
-            Term = await GetAllLibraries.GetAllLibrariesAsTermsAsync();
+            //Term = await GetAllLibraries.GetAllLibrariesAsTermsAsync();
+            Library = await GetAllLibraries.GetLibraryFromListAsync();
 
         }
     }

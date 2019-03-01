@@ -9,7 +9,7 @@ namespace RazorPagesTerm.ApiHandlers
 {
     public class DeleteLibrary
     {
-        public Term Term { get; set; }
+        //public Term Term { get; set; }
         public static async System.Threading.Tasks.Task DeleteTermAsync(string id)
         {
             var endpointUrl = "https://fhirbackendservices.azurewebsites.net/fhir/Library/";

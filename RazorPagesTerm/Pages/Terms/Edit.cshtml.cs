@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using RazorPagesTerm.ApiHandlers;
-using RazorPagesTerm.Models;
 
 namespace RazorPagesTerm.Pages.Terms
 {
@@ -16,8 +15,7 @@ namespace RazorPagesTerm.Pages.Terms
     {
 
         [BindProperty]
-        public Term Term { get; set; }
-        public Library library { get; set; }
+        public Library Library { get; set; }
 
         public async Task<IActionResult> OnGetAsync(string id)
         {
@@ -26,9 +24,9 @@ namespace RazorPagesTerm.Pages.Terms
                 return NotFound();
             }
 
-            Term = await GetLibrary.GetTermAsync(id);
+            Library = await FhirClientHandler.GetLibraryAsync(id);
 
-            if (Term == null)
+            if (Library == null)
             {
                 return NotFound();
             }
@@ -41,11 +39,11 @@ namespace RazorPagesTerm.Pages.Terms
             if (!ModelState.IsValid)
             {
                 return Page();
-            }   
+            }
 
             if (!string.IsNullOrEmpty(id))
-            { 
-            await EditLibrary.EditTermAsync(Term,id);
+            {
+                await EditLibrary.EditLibraryAsync(Library, id);
             }
             return RedirectToPage("./Index");
         }

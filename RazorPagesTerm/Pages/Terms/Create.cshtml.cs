@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using RazorPagesTerm.ApiHandlers;
-using RazorPagesTerm.Models;
+using Hl7.Fhir.Model;
 
 namespace RazorPagesTerm.Pages.Terms
 {
@@ -19,7 +19,7 @@ namespace RazorPagesTerm.Pages.Terms
         }
 
         [BindProperty]
-        public Term Term { get; set; }
+        public Library Library { get; set; }
 
         public async Task<IActionResult> OnPostAsync()
         {
@@ -27,8 +27,8 @@ namespace RazorPagesTerm.Pages.Terms
             {
                 return Page();
             }
-            var term = Term;
-            await CreateLibrary.CreateLibraryAndPostAsync(term);
+            var library = Library;
+            await CreateLibrary.CreateLibraryAndPostAsync(library);
 
 
             return RedirectToPage("./Index");

@@ -6,14 +6,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using RazorPagesTerm.ApiHandlers;
-using RazorPagesTerm.Models;
+using Hl7.Fhir.Model;
 
 namespace RazorPagesTerm.Pages.Terms
 {
     public class DeleteModel : PageModel
     {
         [BindProperty]
-        public Term Term { get; set; }
+        public Library Library { get; set; }
 
         public async Task<IActionResult> OnGetAsync(string id)
         {
@@ -22,9 +22,9 @@ namespace RazorPagesTerm.Pages.Terms
                 return NotFound();
             }
 
-            Term = await GetLibrary.GetTermAsync(id);
+            Library = await FhirClientHandler.GetLibraryAsync(id);
 
-            if (Term == null)
+            if (Library == null)
             {
                 return NotFound();
             }
@@ -42,7 +42,7 @@ namespace RazorPagesTerm.Pages.Terms
 
             if (id != null)
             {
-              await DeleteLibrary.DeleteTermAsync(id);
+                await DeleteLibrary.DeleteTermAsync(id);
             }
 
             return RedirectToPage("./Index");

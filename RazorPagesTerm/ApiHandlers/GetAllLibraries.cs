@@ -3,37 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Hl7.Fhir.Model;
-using RazorPagesTerm.Models;
 
 namespace RazorPagesTerm.ApiHandlers
 {
     public class GetAllLibraries
     {
-        public static async Task<IList<Term>> GetAllLibrariesAsTermsAsync()
+        public static async Task<IList<Library>> GetLibraryFromListAsync()
         {
             var bundle = await FhirClientHandler.GetBundleAsync();
 
             var listOfLibrary = GetAllLibrariesFromBundle(bundle);
 
-            var listOfTerms = GetAllTermsFromLibraryList(listOfLibrary);
+            return listOfLibrary;
 
-            return listOfTerms;
-        }
-
-        private static List<Term> GetAllTermsFromLibraryList(List<Library> listOfLibrary)
-        {
-            var listOfTerms = new List<Term>();
-            foreach (var library in listOfLibrary)
-            {
-                var term = new Term()
-                {
-                    Id = library.Id,
-                    Name = library.Name,
-                    Title = library.Title
-                };
-                listOfTerms.Add(term);
-            };
-            return listOfTerms;
         }
 
         private static List<Library> GetAllLibrariesFromBundle(Bundle bundle)

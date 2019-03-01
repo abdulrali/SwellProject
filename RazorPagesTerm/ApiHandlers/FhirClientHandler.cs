@@ -1,7 +1,6 @@
 ﻿using Hl7.Fhir.Model;
 using Hl7.Fhir.Rest;
 using Hl7.Fhir.Serialization;
-using RazorPagesTerm.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +20,7 @@ namespace RazorPagesTerm.ApiHandlers
         {
 
             var fullUrl = $"{_fhirApiEndPoint}{id}";
-                     
+
             var body = _fhirJsonSerializer.SerializeToString(library);
             var content = new StringContent(body, Encoding.UTF8, "application/json");
 
@@ -39,7 +38,7 @@ namespace RazorPagesTerm.ApiHandlers
             }
         }
 
-            public static async System.Threading.Tasks.Task DeleteLibraryAsync(string id)
+        public static async System.Threading.Tasks.Task DeleteLibraryAsync(string id)
         {
             if (id == null)
             {
@@ -68,9 +67,9 @@ namespace RazorPagesTerm.ApiHandlers
 
             var bundle = fhirJsonParser.Parse<Bundle>(content);
 
-            return bundle; 
+            return bundle;
 
-           throw new NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public static async Task<Library> GetLibraryAsync(string id)
