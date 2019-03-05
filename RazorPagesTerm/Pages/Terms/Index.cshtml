@@ -25,19 +25,21 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Term[0].Title)
+                @Html.DisplayNameFor(model => model.Library[0].Title)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Term[0].Name)
+                @Html.DisplayNameFor(model => model.Library[0].Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Term[0].Status)
+                @Html.DisplayNameFor(model => model.Library[0].Status)
             </th>
-            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.Library[0].Version)
+            </th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Term) {
+@foreach (var item in Model.Library) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
@@ -47,6 +49,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Version)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |

@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using RazorPagesTerm.ApiHandlers;
-using RazorPagesTerm.Models;
 using Hl7.Fhir.Model;
 
 namespace RazorPagesTerm.Pages.Terms

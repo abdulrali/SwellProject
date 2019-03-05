@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Hl7.Fhir.Model;
-using RazorPagesTerm.Models;
+//using RazorPagesTerm.Models;
 
 namespace RazorPagesTerm.ApiHandlers
 {

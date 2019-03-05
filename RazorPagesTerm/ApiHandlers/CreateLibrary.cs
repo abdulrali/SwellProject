@@ -1,5 +1,4 @@
 ﻿using Hl7.Fhir.Model;
-using RazorPagesTerm.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
